@@ -1,9 +1,7 @@
 require 'sinatra'
 require 'json'
 
-cls = {
-  'master' => ['math', 'science'],
-}
+cls = {}
 
 before do
   content_type :json
@@ -28,7 +26,5 @@ end
 patch '/:node/classification' do
   node = params[:node]
   new_class = []
-  old_classification = cls[:node]
-  new_classification = old_classification.push(new_class)
-  cls[node] = new_classification
+  cls[node] = cls[node].push(new_class)
 end
